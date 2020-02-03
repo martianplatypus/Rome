@@ -561,10 +561,10 @@ deleteFile
   -> m ()
 deleteFile path verbose = do
   let sayFunc = if verbose then sayLnWithTime else sayLn
-  liftIO $ removeFile path `catch` handleError sayFunc
+  liftIO $ removeFile path `catch` handleError
   when verbose $ liftIO . sayFunc $ "Deleted: " <> path
  where
-  handleError f e | isDoesNotExistError e = f $ "Error: no such file " <> path
+  handleError e   | isDoesNotExistError e = return ()
                   | otherwise             = throwM e
 
 
