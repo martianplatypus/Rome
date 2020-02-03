@@ -11,7 +11,9 @@ import           Control.Arrow                            ( left )
 import           Control.Exception             as E
                                                           ( try )
 import           Control.Lens                      hiding ( List )
-import           Control.Monad.Catch
+import           Control.Monad.Catch                      ( catch
+                                                          , throwM
+                                                          )
 import           Control.Monad.Except
 import           Control.Monad.Trans.Resource             ( MonadUnliftIO
                                                           , runResourceT
